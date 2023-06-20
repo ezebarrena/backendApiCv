@@ -2,7 +2,7 @@ let instance = null;
 require('dotenv').config();
 const jwt = require("jsonwebtoken");
 const UsuariosService = require("../services/usuarios.service");
-const AuthService = require('../services/auth.service');
+//const AuthService = require('../services/auth.service');
 
 class UsuariosController {
 
@@ -26,25 +26,6 @@ class UsuariosController {
     }
   }
 
-  async getUsuarioById(req, res) {
-    try {
-      const id = req.params.id;
-      let user = await UsuariosService.getUserById(id);
-      if (!user) {
-        return res.status(404).json({
-          method: "getUsuarioById",
-          message: "Not Found",
-        });
-      }
-      return res.status(200).json(user);
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({
-        method: "getUsuarioById",
-        message: err,
-      });
-    }
-  }
 
   async createUsuario(req, res) {
     try {
