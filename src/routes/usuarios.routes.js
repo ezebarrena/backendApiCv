@@ -16,3 +16,4 @@ router.post("/", usuariosController.createUsuario); //POST USUARIOS
 router.post("/login", usuariosController.login);
 
 module.exports = router;
+

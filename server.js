@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/usuarios", require('./src/routes/usuarios.routes'));
+app.use("/mensajes", require('./src/routes/mensajes.routes'));
 
 app.listen(PORT, () => {
   console.log('Server running on port ' + PORT);

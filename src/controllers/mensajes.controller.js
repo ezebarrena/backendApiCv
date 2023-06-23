@@ -1,23 +1,45 @@
+let instance = null;
+const MensajesService = require("../services/mensajes.service");
+
 class MensajesController {
 
-    static getInstance() {
-        if (!instance) {
-          return new MensajesController();
-        }
-        return instance;
+  static getInstance() {
+      if (!instance) {
+        return new MensajesController();
       }
-
-    async getController(req, res) {
-        try {
-          const mensajes = await MensajesService.getController();
-          return res.status(200).json(mensajes);
-        } catch (err) {
-          console.error(err);
-          return res.status(500).json({
-            method: "getMensajes",
-            message: err,
-          });
-        }
+      return instance;
     }
 
+  async getMensaje(req, res) {
+      try {
+        const mensajes = await MensajesService.getMensaje();
+        return res.status(200).json(mensajes);
+      } catch (err) {
+        console.error(err);
+        return res.status(500).json({
+          method: "getMensajes",
+          message: err,
+        });
+      }
+  }
+
+  async createMensaje(req, res) {
+    try {
+      let newMensaje = await MensajesService.createMensaje(req.body);
+
+      return res.status(201).json({
+        message: "Created!",
+        mensaje: newMensaje,
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({
+        method: "createMensaje",
+        message: err.message,
+      });
+    }
+  }
+
 }
+
+module.exports = MensajesController.getInstance();
