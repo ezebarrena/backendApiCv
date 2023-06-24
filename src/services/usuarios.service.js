@@ -13,7 +13,7 @@ class UsuariosService{
         }
       }
       
-      /*capaz no es necesario
+      /*capaz no es necesario*/
       async getUserByEmail(email) {
         try {
           let user = await UsuariosModel.findOne({email});
@@ -23,7 +23,7 @@ class UsuariosService{
           throw new Error("Error in getUserById Service");
         }
       }
-      */
+      
 
       async createUser(user) {
         try {

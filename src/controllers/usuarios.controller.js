@@ -2,7 +2,7 @@ let instance = null;
 require('dotenv').config();
 const jwt = require("jsonwebtoken");
 const UsuariosService = require("../services/usuarios.service");
-//const AuthService = require('../services/auth.service');
+const AuthService = require('../services/auth.service');
 
 class UsuariosController {
 
@@ -59,7 +59,7 @@ class UsuariosController {
         return res.status(200).json({
           status: 200,
           token,
-          message: "Token created successfully."
+          message: "Login successful"
         });
 
       } else {
