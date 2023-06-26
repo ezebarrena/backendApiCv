@@ -26,7 +26,6 @@ class MensajesController {
   async createMensaje(req, res) {
     try {
       let newMensaje = await MensajesService.createMensaje(req.body);
-
       return res.status(201).json({
         message: "Created!",
         mensaje: newMensaje,
@@ -39,7 +38,6 @@ class MensajesController {
       });
     }
   }
-
 }
 
 module.exports = MensajesController.getInstance();
