@@ -4,7 +4,7 @@ const mensajesController = require("../controllers/mensajes.controller")
 
 const router = Router();
 
-router.get("/", mensajesController.getMensaje); //GET MENSAJE
+router.get("/getMensaje/", mensajesController.getMensaje); //GET MENSAJE
 
 router.post("/contactar", mensajesController.createMensaje); //POST MENSAJE
 

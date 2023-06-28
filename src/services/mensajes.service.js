@@ -1,19 +1,20 @@
 const MensajesModel = require('../models/Mensajes');
 
 class MensajesService {
-
-    async getMensaje() {
+  
+    async getMensaje(req,res) {
         try {
+          console.log("te paso los msgs")
           const mensajes = await MensajesModel.find();
-          return res.status(200).json(mensajes);
+          console.log(mensajes)
+          //res.send({status:"ok",data:mensajes})
+          return mensajes;
         } catch (err) {
+          console.log(err);
           console.error(err);
-          return res.status(500).json({
-            method: "getMensajes",
-            message: err,
-          });
+          throw new Error("Error in getMensaje Service");
+          };
         }
-    }
   
     async createMensaje(mensaje) {
       try {
