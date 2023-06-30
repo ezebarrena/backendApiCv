@@ -16,7 +16,11 @@ class UsuariosController {
   async getUsuarios(req, res) {
     try {
       const users = await UsuariosService.getUsers();
-      return res.status(200).json(users);
+      return res.status(200).json({
+        message: "Todos los usuarios",
+        users: users,
+        status: 200,
+      });
     } catch (err) {
       console.error(err);
       return res.status(500).json({
@@ -34,12 +38,14 @@ class UsuariosController {
       return res.status(201).json({
         message: "Created!",
         usuario: newUser,
+        status: 201
       });
     } catch (err) {
       console.error(err);
       return res.status(500).json({
         method: "createUsuario",
-        message: err.message,
+        message: "Usuario ya existente",
+        status: 500
       });
     }
   }
@@ -65,6 +71,7 @@ class UsuariosController {
       } else {
         return res.status(401).json({
           message: "Unauthorized.",
+          status: 401
         });
       }
     } catch (err) {

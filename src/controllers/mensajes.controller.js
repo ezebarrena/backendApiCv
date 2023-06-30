@@ -13,7 +13,11 @@ class MensajesController {
   async getMensaje(req, res) {
       try {
         const mensajes = await MensajesService.getMensaje();
-        return res.status(200).json(mensajes);
+        return res.status(200).json({
+          message: "Todos los mensajes",
+          mensaje: mensajes,
+          status: 200
+        });
       } catch (err) {
         console.error(err);
         return res.status(500).json({
@@ -29,12 +33,14 @@ class MensajesController {
       return res.status(201).json({
         message: "Created!",
         mensaje: newMensaje,
+        status: 201 ,
       });
     } catch (err) {
       console.error(err);
       return res.status(500).json({
         method: "createMensaje",
         message: err.message,
+        
       });
     }
   }
